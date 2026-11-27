@@ -1273,8 +1273,8 @@ rec {
         workspace_member = null;
         src = pkgs.fetchgit {
           url = "https://github.com/LiGoldragon/signal-pattern-nexus";
-          rev = "b344379b15484c7dee6515998cd5402df56f0cdb";
-          sha256 = "00f0a0s4hag03xzjqsk0p3n4lzgdz6j6gl8152lw0rlv1c7f0a5j";
+          rev = "19efd56669ff710770883967bf76e1eba7fdd113";
+          sha256 = "175gax8qxm8az8yimw6xhi45kppav87lvswj4y9mh6bnx3jhcq97";
         };
         libName = "signal_pattern_nexus";
         dependencies = [
