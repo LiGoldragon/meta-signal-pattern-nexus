@@ -41,8 +41,8 @@ pub enum SettingName {
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
 pub enum SettingKey {
-    Harness(signal_belief_nexus::Harness),
-    Kind(signal_belief_nexus::Kind),
+    Harness(signal_pattern_nexus::Harness),
+    Kind(signal_pattern_nexus::Kind),
 }
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
@@ -88,19 +88,19 @@ pub struct SocketPath(pub String);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
-pub struct OwnedRoot(pub signal_belief_nexus::RelativePath);
+pub struct OwnedRoot(pub signal_pattern_nexus::RelativePath);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
-pub struct GenerationsDirectory(pub signal_belief_nexus::RelativePath);
+pub struct GenerationsDirectory(pub signal_pattern_nexus::RelativePath);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
-pub struct CurrentLink(pub signal_belief_nexus::RelativePath);
+pub struct CurrentLink(pub signal_pattern_nexus::RelativePath);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
-pub struct SettingsFile(pub signal_belief_nexus::RelativePath);
+pub struct SettingsFile(pub signal_pattern_nexus::RelativePath);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
@@ -108,11 +108,11 @@ pub struct InstructionsSetting(pub String);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
-pub struct InstructionsFile(pub signal_belief_nexus::RelativePath);
+pub struct InstructionsFile(pub signal_pattern_nexus::RelativePath);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
-pub struct SkillsDirectory(pub signal_belief_nexus::RelativePath);
+pub struct SkillsDirectory(pub signal_pattern_nexus::RelativePath);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Copy, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
@@ -140,15 +140,15 @@ pub struct Layout {
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
 pub struct HarnessLayout {
-    pub harness: signal_belief_nexus::Harness,
+    pub harness: signal_pattern_nexus::Harness,
     pub layout: Layout,
 }
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
 pub struct PlacementDefault {
-    pub kind: signal_belief_nexus::Kind,
-    pub placement: signal_belief_nexus::Placement,
+    pub kind: signal_pattern_nexus::Kind,
+    pub placement: signal_pattern_nexus::Placement,
 }
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
@@ -156,8 +156,8 @@ pub struct PlacementDefault {
 pub enum Set {
     RepositoryPolling(Timeout),
     SubscriberCapacity(i64),
-    OrdinaryPeers(signal_belief_nexus::PeerList),
-    MetaPeers(signal_belief_nexus::PeerList),
+    OrdinaryPeers(signal_pattern_nexus::PeerList),
+    MetaPeers(signal_pattern_nexus::PeerList),
     HarnessLayout(HarnessLayout),
     PlacementDefault(PlacementDefault),
     GenerationRetention(RetentionPolicy),
@@ -170,7 +170,7 @@ pub enum Set {
     TextBudget(Budget),
     TranslatorFrameCapacity(ByteLimit),
     TranslatorTransportTimeout(Timeout),
-    GitExecutable(signal_belief_nexus::ExecutablePath),
+    GitExecutable(signal_pattern_nexus::ExecutablePath),
 }
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]

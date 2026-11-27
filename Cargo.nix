@@ -39,7 +39,7 @@ rec {
   #
 
   rootCrate = rec {
-    packageId = "meta-signal-belief-nexus";
+    packageId = "meta-signal-pattern-nexus";
 
     # Use this attribute to refer to the derivation building your root crate package.
     # You can override the features with rootCrate.build.override { features = [ "default" "feature1" ... ]; }.
@@ -55,10 +55,10 @@ rec {
   # You can override the features with
   # workspaceMembers."${crateName}".build.override { features = [ "default" "feature1" ... ]; }.
   workspaceMembers = {
-    "meta-signal-belief-nexus" = rec {
-      packageId = "meta-signal-belief-nexus";
+    "meta-signal-pattern-nexus" = rec {
+      packageId = "meta-signal-pattern-nexus";
       build = internal.buildRustCrateWithFeatures {
-        packageId = "meta-signal-belief-nexus";
+        packageId = "meta-signal-pattern-nexus";
       };
 
       # Debug support which might change between releases.
@@ -612,12 +612,12 @@ rec {
         };
         resolvedDefaultFeatures = [ "default" ];
       };
-      "meta-signal-belief-nexus" = rec {
-        crateName = "meta-signal-belief-nexus";
+      "meta-signal-pattern-nexus" = rec {
+        crateName = "meta-signal-pattern-nexus";
         version = "1.1.0";
         edition = "2021";
         src = lib.cleanSourceWith { filter = sourceFilter;  src = ./.; };
-        libName = "meta_signal_belief_nexus";
+        libName = "meta_signal_pattern_nexus";
         dependencies = [
           {
             name = "datom-codec";
@@ -641,8 +641,8 @@ rec {
             usesDefaultFeatures = false;
           }
           {
-            name = "signal-belief-nexus";
-            packageId = "signal-belief-nexus";
+            name = "signal-pattern-nexus";
+            packageId = "signal-pattern-nexus";
             usesDefaultFeatures = false;
           }
           {
@@ -653,7 +653,7 @@ rec {
           }
         ];
         features = {
-          "datom" = [ "dep:datom-codec" "dep:protos" "signal/datom" "signal-belief-nexus/datom" "translator/datom" ];
+          "datom" = [ "dep:datom-codec" "dep:protos" "signal/datom" "signal-pattern-nexus/datom" "translator/datom" ];
         };
         resolvedDefaultFeatures = [ "datom" "default" ];
       };
@@ -1284,17 +1284,17 @@ rec {
         };
         resolvedDefaultFeatures = [ "datom" ];
       };
-      "signal-belief-nexus" = rec {
-        crateName = "signal-belief-nexus";
+      "signal-pattern-nexus" = rec {
+        crateName = "signal-pattern-nexus";
         version = "1.0.0";
         edition = "2021";
         workspace_member = null;
         src = pkgs.fetchgit {
-          url = "https://github.com/LiGoldragon/signal-belief-nexus";
+          url = "https://github.com/LiGoldragon/signal-pattern-nexus";
           rev = "c8542d3ac380130190f3d2592b9c1c2f342e3ffa";
           sha256 = "1z9ikhh62hq75pybj57dhc5pwsz9vqdmjy7c82plnk30wi88wvk7";
         };
-        libName = "signal_belief_nexus";
+        libName = "signal_pattern_nexus";
         dependencies = [
           {
             name = "datom-codec";

@@ -1,5 +1,5 @@
 {
-  description = "meta-signal-belief-nexus — Belief Nexus meta signal contract";
+  description = "meta-signal-pattern-nexus — Pattern Nexus meta signal contract";
 
   inputs = {
     base.url = "github:LiGoldragon/build-base";
@@ -19,7 +19,7 @@
       lintFlags = [ "-D" "warnings" "-A" "clippy::large_enum_variant" ];
 
       # Every test runs with every feature on.
-      memberChecks = { check, ... }: { meta-signal-belief-nexus = check "meta-signal-belief-nexus" [ "default" "datom" ]; };
+      memberChecks = { check, ... }: { meta-signal-pattern-nexus = check "meta-signal-pattern-nexus" [ "default" "datom" ]; };
 
       extraChecks =
         { pkgs, toolchain, check, doc, ... }:
@@ -32,8 +32,8 @@
         in
         {
           # The tests under the default feature set alone.
-          test-default = check "meta-signal-belief-nexus" [ "default" ];
-          generated = pkgs.runCommand "meta-signal-belief-nexus-generated" { generator = ethos-zero.packages.${pkgs.stdenv.hostPlatform.system}.default; declaration = ./signal.ethos; committed = ./src/lib.rs; } ''
+          test-default = check "meta-signal-pattern-nexus" [ "default" ];
+          generated = pkgs.runCommand "meta-signal-pattern-nexus-generated" { generator = ethos-zero.packages.${pkgs.stdenv.hostPlatform.system}.default; declaration = ./signal.ethos; committed = ./src/lib.rs; } ''
             temporary="$(${pkgs.coreutils}/bin/mktemp -d)"
             "$generator/bin/ethos-zero" "Generate.{ «$declaration» «$temporary» }"
             generated="$(${pkgs.findutils}/bin/find "$temporary" -maxdepth 1 -name '*.rs' ! -name 'committed-generated.rs' -print -quit)"
@@ -41,12 +41,12 @@
             ${pkgs.diffutils}/bin/cmp "$generated" "$temporary/committed-generated.rs"
             touch "$out"
           '';
-          fmt = pkgs.runCommand "meta-signal-belief-nexus-fmt" { nativeBuildInputs = [ toolchain ]; } ''
+          fmt = pkgs.runCommand "meta-signal-pattern-nexus-fmt" { nativeBuildInputs = [ toolchain ]; } ''
             rustfmt --check --edition ${manifest.package.edition} ${rust}/src/lib.rs ${rust}/tests/*.rs
             touch $out
           '';
           # The generated Set holds a HarnessLayout beside scalar variants.
-          doc = doc "meta-signal-belief-nexus" [ "default" "datom" ] [ "-D" "warnings" "-A" "clippy::large_enum_variant" ];
+          doc = doc "meta-signal-pattern-nexus" [ "default" "datom" ] [ "-D" "warnings" "-A" "clippy::large_enum_variant" ];
         };
     };
 }

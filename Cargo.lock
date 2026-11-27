@@ -184,14 +184,14 @@ dependencies = [
 ]
 
 [[package]]
-name = "meta-signal-belief-nexus"
+name = "meta-signal-pattern-nexus"
 version = "1.1.0"
 dependencies = [
  "datom-codec",
  "protos",
  "rkyv",
  "signal",
- "signal-belief-nexus",
+ "signal-pattern-nexus",
  "translator",
 ]
 
@@ -377,9 +377,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "signal-belief-nexus"
+name = "signal-pattern-nexus"
 version = "1.0.0"
-source = "git+https://github.com/LiGoldragon/signal-belief-nexus?rev=c8542d3ac380130190f3d2592b9c1c2f342e3ffa#c8542d3ac380130190f3d2592b9c1c2f342e3ffa"
+source = "git+https://github.com/LiGoldragon/signal-pattern-nexus?rev=c8542d3ac380130190f3d2592b9c1c2f342e3ffa#c8542d3ac380130190f3d2592b9c1c2f342e3ffa"
 dependencies = [
  "datom-codec",
  "protos",

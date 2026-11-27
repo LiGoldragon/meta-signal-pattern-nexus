@@ -1,5 +1,5 @@
 Signal
-[ :signal_belief_nexus:[ PeerList RelativePath ExecutablePath
+[ :signal_pattern_nexus:[ PeerList RelativePath ExecutablePath
                           Harness Kind Placement ]
   :translator:[ Caller ] ]                           ; imports
 [ Configure.ConfigureRequest ]                       ; inputs: set one field; an expected revision makes it conditional

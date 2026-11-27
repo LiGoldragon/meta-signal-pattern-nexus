@@ -1,6 +1,6 @@
 //! The meta contract as a wire and as Datom text, through its public API.
 
-use meta_signal_belief_nexus::{
+use meta_signal_pattern_nexus::{
     Budget, ByteLimit, ConfigurationRefusal, ConfigurationRevision, ConfigureRequest,
     ConfiguredState, DepthLimit, Input, Keeper, NodeLimit, Output, Readiness, Set, SettingAddress,
     SettingName, SocketPath, Timeout,
@@ -159,7 +159,7 @@ mod text {
             read::<Input>("Configure.{ None OrdinaryPeers.[ { flow { 1000 42 } } ] }"),
             Input::Configure(ConfigureRequest {
                 configuration_revision_option: None,
-                set: Set::OrdinaryPeers(signal_belief_nexus::PeerList(vec![peer])),
+                set: Set::OrdinaryPeers(signal_pattern_nexus::PeerList(vec![peer])),
             })
         );
     }
