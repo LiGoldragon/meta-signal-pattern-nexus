@@ -35,7 +35,7 @@
           test-default = check "meta-signal-belief-nexus" [ "default" ];
           generated = pkgs.runCommand "meta-signal-belief-nexus-generated" { generator = ethos-zero.packages.${pkgs.stdenv.hostPlatform.system}.default; declaration = ./signal.ethos; committed = ./src/lib.rs; } ''
             temporary="$(${pkgs.coreutils}/bin/mktemp -d)"
-            "$generator/bin/ethos-zero" "Generate.{ «$declaration» «$temporary» }"
+            "$generator/bin/ethos-zero" "Generate.{ [ «$declaration» ] «$temporary» }"
             generated="$(${pkgs.findutils}/bin/find "$temporary" -maxdepth 1 -name '*.rs' ! -name 'committed-generated.rs' -print -quit)"
             ${pkgs.coreutils}/bin/head -c "$(${pkgs.coreutils}/bin/stat -c %s "$generated")" "$committed" > "$temporary/committed-generated.rs"
             ${pkgs.diffutils}/bin/cmp "$generated" "$temporary/committed-generated.rs"

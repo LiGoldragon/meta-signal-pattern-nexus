@@ -13,7 +13,7 @@ Signal
                 TranslatorTransportTimeout GitExecutable ]
   SettingKey.[ Harness Kind ]                         ; the key of a setting kept per harness or per kind
   SettingAddress.{ SettingName Option<SettingKey> }   ; one setting: its name and, where it has one, its key
-  Readiness.[ Awaiting.Vector<SettingAddress> Ready ]
+  Readiness.[ Awaiting.⟦ SettingAddress ⟧ Ready ]
   Timeout.Integer
   ByteLimit.Integer
   NodeLimit.Integer
@@ -52,7 +52,7 @@ Signal
         GitExecutable.ExecutablePath ]
   ConfigureRequest.{ Option<ConfigurationRevision> Set } ; None is unconditional; Some is compare-and-set
   ConfiguredState.{ Set Keeper ConfigurationRevision Readiness }
-  TranslatorConfiguration.{ ConfigurationRevision Vector<Set> Readiness }
+  TranslatorConfiguration.{ ConfigurationRevision ⟦ Set ⟧ Readiness }
   Invalid.{ Keeper SettingAddress String }
   StaleRevision.{ Option<ConfigurationRevision> ConfigurationRevision }
   ConfigurationRefusal.[ Invalid

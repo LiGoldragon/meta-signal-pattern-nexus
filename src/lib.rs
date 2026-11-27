@@ -2,8 +2,11 @@
     dead_code,
     non_camel_case_types,
     non_snake_case,
+    unused_extern_crates,
     clippy::type_complexity
 )]
+#[rustfmt::skip]
+extern crate alloc;
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
@@ -49,13 +52,13 @@ pub enum SettingKey {
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
 pub struct SettingAddress {
     pub setting_name: SettingName,
-    pub setting_key_option: std::option::Option<SettingKey>,
+    pub setting_key_option: core::option::Option<SettingKey>,
 }
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
 pub enum Readiness {
-    Awaiting(std::vec::Vec<SettingAddress>),
+    Awaiting(alloc::vec::Vec<SettingAddress>),
     Ready,
 }
 #[rustfmt::skip]
@@ -84,7 +87,7 @@ pub struct Budget {
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
-pub struct SocketPath(pub String);
+pub struct SocketPath(pub alloc::string::String);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
@@ -104,7 +107,7 @@ pub struct SettingsFile(pub signal_belief_nexus::RelativePath);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, PartialOrd, Ord, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
-pub struct InstructionsSetting(pub String);
+pub struct InstructionsSetting(pub alloc::string::String);
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
@@ -176,7 +179,7 @@ pub enum Set {
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
 pub struct ConfigureRequest {
-    pub configuration_revision_option: std::option::Option<ConfigurationRevision>,
+    pub configuration_revision_option: core::option::Option<ConfigurationRevision>,
     pub set: Set,
 }
 #[rustfmt::skip]
@@ -193,7 +196,7 @@ pub struct ConfiguredState {
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
 pub struct TranslatorConfiguration {
     pub configuration_revision: ConfigurationRevision,
-    pub set_vector: std::vec::Vec<Set>,
+    pub set_vector: alloc::vec::Vec<Set>,
     pub readiness: Readiness,
 }
 #[rustfmt::skip]
@@ -202,13 +205,13 @@ pub struct TranslatorConfiguration {
 pub struct Invalid {
     pub keeper: Keeper,
     pub setting_address: SettingAddress,
-    pub string: String,
+    pub string: alloc::string::String,
 }
 #[rustfmt::skip]
 #[derive(rkyv::Archive, rkyv::Serialize, rkyv::Deserialize, Clone, Debug, PartialEq, Eq, Hash)]
 #[cfg_attr(feature = "datom", derive(datom_codec::Datomizable, datom_codec::Composing))]
 pub struct StaleRevision {
-    pub configuration_revision_option: std::option::Option<ConfigurationRevision>,
+    pub configuration_revision_option: core::option::Option<ConfigurationRevision>,
     pub configuration_revision: ConfigurationRevision,
 }
 #[rustfmt::skip]
@@ -239,7 +242,7 @@ pub trait Answering {
     fn configure(
         &self,
         configure_request: &ConfigureRequest,
-    ) -> std::result::Result<ConfiguredState, Output>;
+    ) -> core::result::Result<ConfiguredState, Output>;
 }
 #[rustfmt::skip]
 pub trait Answerable {
